@@ -1,0 +1,255 @@
+---
+title: "Data Exploration - Enron"
+author: "Theresa Wohlsen"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+output: 
+  html_document:
+    # theme of html document
+    # theme of code highlight                                 
+    # table of contents
+    theme       : journal            # "default", "cerulean", "journal",
+                                    # "flatly", "readable", "spacelab",
+                                    # "united", "cosmo", "lumen", "paper", 
+                                    # "sandstone", "simplex", "yeti"
+    highlight   : tango          # "default", "tango", "pygments",
+                                    # "kate",  "monochrome", "espresso",
+                                    # "zenburn", "haddock", "textmate"
+    toc         : true              # get table of content
+    toc_depth   : 3
+    toc_float   : true
+---
+
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r echo=FALSE, message=FALSE, warning=FALSE, packages}
+
+# Following packages are installed:
+#install.packages('ggplot2')
+#install.packages('GGally')
+#install.packages('dplyr')
+#install.packages('gridExtra')
+#install.packages("rmarkdown")
+#install.packages('knitr')
+#install.packages('reticulate')
+
+library(reticulate)
+library(gridExtra)
+library(ggplot2)
+library(GGally)
+library(dplyr)
+library(rmarkdown)
+library(knitr)
+
+# knitr: Suppress code/messages/warnings 
+#        Set default plot options and center them
+knitr::opts_chunk$set(fig.width=9,fig.height=5,fig.path='Figs/',
+                      fig.align='center',tidy=TRUE,
+                      echo=FALSE,warning=FALSE,message=FALSE)
+
+```
+
+# Findings
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, Load_the_Data}
+
+#In this step I read the csv and save it to the new table enron
+raw_enron <- read.csv('raw_enron.csv')
+enron <- read.csv('enron.csv')
+columns <- names(enron)
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, Print_Data}
+kable(enron[1:5,1:5],caption = "enron")
+```
+
+# Number of NaNs
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, First_Exploration, fig.width=15, fig.height=12}
+#summary(enron)
+y_nan_count_raw <-sapply(raw_enron, function(y) sum(length(which(is.na(y)))))
+y_nan_count_raw <- data.frame(y_nan_count_raw)
+y_nan_count_raw$names <- rownames(y_nan_count_raw)
+y_nan_raw <- y_nan_count_raw[order(-y_nan_count_raw$y_nan_count_raw),]
+kable(y_nan_raw[1:5,],caption = "y_nan_count_raw")
+
+y_nan_count <-sapply(enron, function(y) sum(length(which(is.na(y)))))
+y_nan_count <- data.frame(y_nan_count)
+y_nan_count$names <- rownames(y_nan_count)
+y_nan <- y_nan_count[order(-y_nan_count$y_nan_count),]
+kable(y_nan[1:5,],caption = "y_nan_count")
+
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, NaNs, fig.width=15, fig.height=12}
+#summary(enron)
+raw_enron$na_count <- apply(raw_enron, 1, function(x) sum(is.na(x)))
+x_nan_count_raw <- raw_enron[order(-raw_enron$na_count),]
+x_nan_count_raw$Name <- x_nan_count_raw$name
+kable(x_nan_count_raw[1:5,23:24],caption = "x_nan_count_raw")
+
+enron$na_count <- apply(enron, 1, function(x) sum(is.na(x)))
+x_nan_count <- enron[order(-enron$na_count),]
+x_nan_count$Name <- x_nan_count$name
+kable(x_nan_count[1:5,23:24],caption = "x_nan_count")
+
+```
+
+# Outlier
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, Bivariate_Plots_quality}
+# Scatter Plot - from_poi_to_this_person
+q1 <-
+ggplot(aes(x = bonus, y = from_poi_to_this_person), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('bonus') +
+  ylab('from_poi_to_this_person')
+
+# Scatter Plot - salary
+q2 <- 
+ggplot(aes(x = bonus, y = salary), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('bonus') +
+  ylab('salary')
+
+# Scatter Plot - to_messages
+q3 <-
+ggplot(aes(x = bonus, y = to_messages), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('bonus') +
+  ylab('to_messages')
+
+# Scatter Plot - deferral_payments
+q4 <-
+ggplot(aes(x = bonus, y = deferral_payments), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('bonus') +
+  ylab('deferral_payments')
+
+# Scatter Plot - total_payments
+q5 <-
+ggplot(aes(x = bonus, y = total_payments), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('bonus') +
+  ylab('total_payments')
+
+# Scatter Plot - loan_advances
+q6 <-
+ggplot(aes(x = bonus, y = loan_advances), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('bonus') +
+  ylab('loan_advances')
+
+# Scatter Plot - long_term_incentive
+q7 <-
+ggplot(aes(x = bonus, y = long_term_incentive), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('bonus') +
+  ylab('long_term_incentive')
+
+# Scatter Plot - shared_receipt_with_poi
+q8 <-
+ggplot(aes(x = bonus, y = shared_receipt_with_poi), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('bonus') +
+  ylab('shared_receipt_with_poi')
+
+# Arranging all scatter plots above
+grid.arrange(q1, q2, q3 , q4, q5, q6, q7, q8, ncol=3)
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, Bivariate_Plots_correlation}
+
+# Scatter Plot - salary
+ggplot(aes(x = bonus, y = salary), data = enron) +
+  geom_point(alpha = 1, size =2, position = 'jitter') +
+  xlab('bonus') +
+  ylab('salary') +
+  geom_text(aes(label=ifelse(salary>400000,as.character(name),'')),hjust=0,vjust=0)
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, Potential_Outliers}
+
+potential_outliers1 <- enron[ which(enron$salary > 1000000),]
+potential_outliers2 <- enron[ which(enron$bonus > 6000000),]
+
+kable(potential_outliers1[1:3,0:3],caption = "Salary-Outlier")
+kable(potential_outliers2[1:2,0:3],caption = "Bonus-Outlier")
+```
+
+# Correlation
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, Correlation}
+
+# Calculation of the combination of quality and the other parameter using pearson
+cor.test(enron$bonus, enron$from_poi_to_this_person, method = 'pearson')
+cor.test(enron$bonus, enron$salary, method = 'pearson')
+cor.test(enron$bonus, enron$salary, method = 'pearson')
+
+```
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, poi}
+# Scatter Plot - from_poi_to_this_person
+q1 <-
+ggplot(aes(x = poi, y = from_poi_to_this_person), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('poi') +
+  ylab('from_poi_to_this_person')
+
+# Scatter Plot - salary
+q2 <- 
+ggplot(aes(x = poi, y = salary), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('poi') +
+  ylab('salary')
+
+# Scatter Plot - to_messages
+q3 <-
+ggplot(aes(x = poi, y = to_messages), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('poi') +
+  ylab('to_messages')
+
+# Scatter Plot - deferral_payments
+q4 <-
+ggplot(aes(x = poi, y = deferral_payments), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('poi') +
+  ylab('deferral_payments')
+
+# Scatter Plot - total_payments
+q5 <-
+ggplot(aes(x = poi, y = total_payments), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('poi') +
+  ylab('total_payments')
+
+# Scatter Plot - loan_advances
+q6 <-
+ggplot(aes(x = poi, y = loan_advances), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('poi') +
+  ylab('loan_advances')
+
+# Scatter Plot - long_term_incentive
+q7 <-
+ggplot(aes(x = poi, y = long_term_incentive), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('poi') +
+  ylab('long_term_incentive')
+
+# Scatter Plot - shared_receipt_with_poi
+q8 <-
+ggplot(aes(x = poi, y = shared_receipt_with_poi), data = enron) +
+  geom_point(alpha = 1, size = 1, position = 'jitter') +
+  xlab('poi') +
+  ylab('shared_receipt_with_poi')
+
+# Arranging all scatter plots above
+grid.arrange(q1, q2, q3 , q4, q5, q6, q7, q8, ncol=3)
+```
