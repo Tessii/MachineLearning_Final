@@ -260,13 +260,15 @@ predicting time: 0.002 s
 
 ## Puprose and Effect of parameters
 > What does it mean to tune the parameters of an algorithm, and what can happen if you don’t do this well?
+
 Tuning the parameters of algorithm is the process of changing, testing and updating the parameters with the goal to improve the outcome of the classifier. By tuning the parameters its important to look on different metrics to evualate your choosen parameters. This is because, on the hand you could increase the accuracy, but on the other hand you could decrease the recall.
 
 ## Application on my algorithm
 > How did you tune the parameters of your particular algorithm? What parameters did you tune?
 > (Some algorithms do not have parameters that you need to tune -- if this is the case for the one you picked, 
 > identify and briefly explain how you would have done it for the model that was not your final choice 
-> or a different model that does utilize parameter tuning, e.g. a decision tree classifier).  
+> or a different model that does utilize parameter tuning, e.g. a decision tree classifier). 
+
 Using KNeighborsClassifier it was necessary to set the parameter **n_neighbors** to three. I also tried to tune other parameters, but just tuning the **n_neighbors** paramater to 3, remained the best tuning.
 
 ## Possible Parameter for KNeighbors
@@ -343,7 +345,7 @@ fn = number of false negatives
 tp = number of true positives
 fp = number of false positives
 
-| Category | Description |
+| Category          | Description |
 | --- | --- |
 |*In general*: |tp / (tp + fp)| The best value is 1 and the worst value is 0.|
 |*In the Enron case*:| This metric is a great addition to the previous metric. It shows the confidence level how likely it is that a flaged person is a real POI.| 
