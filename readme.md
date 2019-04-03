@@ -22,8 +22,17 @@ In this project, I will play detective, and put my new skills to use by building
 
 In 2000, Enron was one of the largest companies in the United States. By 2002, it had collapsed into bankruptcy due to widespread corporate fraud. In the resulting Federal investigation, a significant amount of typically confidential information entered into the public record, including tens of thousands of emails and detailed financial data for top executives. [...] this data [contains] a hand-generated list of persons of interest in the fraud case, which means individuals who were indicted, reached a settlement or plea deal with the government, or testified in exchange for prosecution immunity. [Source]( https://classroom.udacity.com/nanodegrees/nd002-airbus/parts/96af8ace-b538-440f-83e6-4cc6eb42caa5/modules/317428862475461/lessons/3174288624239847/concepts/31803986370923)
 
+## Used 
+- Python 3
+- R Studio
+
+## Github structure
+- R = All files regarding Data Exploration in R Studio
+- Py = All supporting py files
+- Other = Additional files (e.g. PDFs)
+
 # Data Exploration
-To explore the dataset I used R Studio. Please find my attached here my [Data Exploration](file://localhost/Users/theresawohlsen/Documents/06_MachineLearning/ud120-projects-master/final_project/EnronAnalysis.html)
+To explore the dataset I used R Studio. Please look at the HTML.
 
 ## Outliers / Incomplete Data
 > Were there any outliers in the data when you got it, and how did you handle those?
