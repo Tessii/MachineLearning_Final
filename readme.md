@@ -141,6 +141,10 @@ features_list =  ['salary', 'to_messages', 'deferral_payments',
                  
 All other created features were used as well.
 
+## Feature Srlection
+
+TO DO: GridSearchCV
+
 # Algorithm
 [relevant rubric item: “pick an algorithm”]
 
