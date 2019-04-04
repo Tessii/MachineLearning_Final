@@ -300,11 +300,11 @@ The number of parallel jobs to run for neighbors search. None means 1 unless in 
 
 # Validation
 [relevant rubric items: “discuss validation”, “validation strategy”]
-
-## Classic mistake
 > What is validation, and what’s a classic mistake you can make if you do it wrong?
 
-To use the same dataset from testing to validate my algorithm
+The purpose of validation is to achieve a stable performance of the algorithm on all data. Without validation, we would use  all available data, which would lead to a great performance on the used dataset, an overfit, but would alsoprobaly lead to a bad performance on unseen data.
+
+Therefore, we split the avaiable data in a training and testset to use them for cross validation.
 
 # Evaluation metrics
 [relevant rubric item: “usage of evaluation metrics”]
