@@ -304,7 +304,11 @@ The number of parallel jobs to run for neighbors search. None means 1 unless in 
 
 The purpose of validation is to achieve a stable performance of the algorithm on all data. Without validation, we would use  all available data, which would lead to a great performance on the used dataset, an overfit, but would alsoprobaly lead to a bad performance on unseen data.
 
-Therefore, we split the avaiable data in a training and testset to use them for cross validation.
+Therefore, I split the avaiable data in a training and testset and used them for cross validation.
+
+For this I used the `train_test_split`. 
+
+In our dataset, we have disbalance between non-POI and POI. The former label is more frequent as the latter one. To tackle this problem I used the second strategy *2) Try Changing Your Performance Metri* by using fitting metrics, such as Recall and Precision. [Source](https://machinelearningmastery.com/tactics-to-combat-imbalanced-classes-in-your-machine-learning-dataset/)
 
 # Evaluation metrics
 [relevant rubric item: “usage of evaluation metrics”]
