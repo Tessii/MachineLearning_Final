@@ -212,53 +212,53 @@ KNeighbors with old dataset:
 
 ### New Dataset:
 Naives Bayes with new dataset:
-Accuracy: 0.2619047619047619
-Precision: 0.12121212121212122
-Recall: 0.6666666666666666
-training time: 0.002 s
-predicting time: 0.002 s
+- Accuracy: 0.2619047619047619
+- Precision: 0.12121212121212122
+- Recall: 0.6666666666666666
+- training time: 0.002 s
+- predicting time: 0.002 s
 
 SVC with new dataset:
-Accuracy: 0.8571428571428571
-Precision: 0.0
-Recall: 0.0
-training time: 0.003 s
-predicting time: 0.002 s
+- Accuracy: 0.8571428571428571
+- Precision: 0.0
+- Recall: 0.0
+- training time: 0.003 s
+- predicting time: 0.002 s
 
 AdaBoost with new dataset:
-Accuracy: 0.8571428571428571
-Precision: 0.5
-Recall: 0.3333333333333333
-training time: 0.082 s
-predicting time: 0.006 s
+- Accuracy: 0.8571428571428571
+- Precision: 0.5
+- Recall: 0.3333333333333333
+- training time: 0.082 s
+- predicting time: 0.006 s
 
 RandomForest with new dataset:
-Accuracy: 0.8809523809523809
-Precision: 1.0
-Recall: 0.16666666666666666
-training time: 0.014 s
-predicting time: 0.002 s
+- Accuracy: 0.8809523809523809
+- Precision: 1.0
+- Recall: 0.16666666666666666
+- training time: 0.014 s
+- predicting time: 0.002 s
 
 GradientBoosting with new dataset:
-Accuracy: 0.8571428571428571
-Precision: 0.5
-Recall: 0.3333333333333333
-training time: 0.061 s
-predicting time: 0.002 s
+- Accuracy: 0.8571428571428571
+- Precision: 0.5
+- Recall: 0.3333333333333333
+- training time: 0.061 s
+- predicting time: 0.002 s
 
 DecisionTree with new dataset:
-Accuracy: 0.7857142857142857
-Precision: 0.2857142857142857
-Recall: 0.3333333333333333
-training time: 0.002 s
-predicting time: 0.002 s
+- Accuracy: 0.7857142857142857
+- Precision: 0.2857142857142857
+- Recall: 0.3333333333333333
+- training time: 0.002 s
+- predicting time: 0.002 s
 
 KNeighbors with new dataset:
-Accuracy: 0.9047619047619048
-Precision: 1.0
-Recall: 0.3333333333333333
-training time: 0.003 s
-predicting time: 0.002 s 
+- Accuracy: 0.9047619047619048
+- Precision: 1.0
+- Recall: 0.3333333333333333
+- training time: 0.003 s
+- predicting time: 0.002 s 
 
 # Parameter
 [relevant rubric items: “discuss parameter tuning”, “tune the algorithm”]
