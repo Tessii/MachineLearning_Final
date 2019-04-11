@@ -127,23 +127,10 @@ Scaling is important, when you are comparing features with different scales (e.g
 ## Used Feature
 > What features did you end up using in your POI identifier, and what selection process did you use to pick them?
 
-Following features wer not used:
+Following features were not used:
 Email address at is provides no value for prediction.
 
-Following given features were used:
-features_list =  ['salary', 'to_messages', 'deferral_payments',
-                'total_payments','loan_advances', 'bonus',
-                 'restricted_stock_deferred', 'deferred_income',
-                 'total_stock_value', 'expenses', 'from_poi_to_this_person',
-                 'exercised_stock_options', 'from_messages', 'other',
-                 'from_this_person_to_poi', 'long_term_incentive',
-                 'shared_receipt_with_poi', 'restricted_stock', 'director_fees']. 
-                 
-All other created features were used as well.
-
-## Feature Srlection
-
-TO DO: GridSearchCV
+For the feature selection I combined SelectKBest and GridSearchCV in pipeline. The purpose of SelectKBest is to select the best k features with the maximum relevance in the target variable.  GridSearchCV automatically cross-validate internally to choose the best hyper parameters.
 
 # Algorithm
 [relevant rubric item: “pick an algorithm”]
