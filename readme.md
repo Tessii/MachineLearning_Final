@@ -26,6 +26,23 @@ In 2000, Enron was one of the largest companies in the United States. By 2002, i
 - Python 3
 - R Studio
 
+## Structure Dataset
+
+|  POI? | Number |
+| --- | --- |
+| POI: | 18 |
+| NON-POI:| 128 |
+| *TOTAL*| 146 |
+
+- Number of features: 22
+- Any features that can be removed apriori? email_address
+
+**Structure** (Dict in Dict):
+- {Name: {Feature1: Value1, Feature2: Value2...}
+- {'METTS MARK': {'salary': 365788, 'to_messages': 807....}
+
+- 128 Non - Poi
+
 ## Github structure
 - R = All files regarding Data Exploration in R Studio
 - Py = All supporting py files
@@ -71,9 +88,6 @@ A detailed investigation showed that two out of four persons were POIs. In concl
 
 ## Given Features
 The data provides three types of features.
-**Structure** (Dict in Dict):
-{Name: {Feature1: Value1, Feature2: Value2...}
-{'METTS MARK': {'salary': 365788, 'to_messages': 807....}
 
 **Financial features (in US dollars)**:
 - salary
